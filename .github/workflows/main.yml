@@ -6,6 +6,6 @@ jobs:
     name: Exploring GitHub Actions
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup
+       # Display the event that triggered the workflow
+      - run: echo "The job was triggered by a ${{ github.event_name }} event."
       
