@@ -1,0 +1,78 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-quartz-service
+spec:
+  selector:  
+    # connects the service to the label of the deployment
+    app: buyer-bff
+  # type: NodePort # assigns an external ip address to the service defaults to ClusterIP
+  ports:
+    # port of service
+    - port: 8880
+      # target port of service should match containerport of deployment
+      # target port is the port of the container or pod
+      targetPort: 8880
+      # nodePort: 30000 # port where the external service will listen to from a browser e.g hast to between 30000 - 32767 (not required if using ingress)
+      protocol: TCP
+      name: http
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dep-quartz-service
+  labels:
+    # this is the label of the deployment to which the selector of the service connects to
+    app: quartz-service
+# specifies the deployment
+spec:
+  replicas: 1
+#  strategy:
+#    type: RollingUpdate
+#    rollingUpdate:
+#      maxUnavailable: 1
+#      maxSurge: 1
+  selector:
+    matchLabels:
+      # the label app inside the selector of the deployment connects to the label of the pod 
+      # so this defines which pods belong to the deployment
+      app: quartz-service
+  # specifies the pod
+  template:
+    metadata:
+      # pods get the label through the template blueprint
+      labels:
+        app: quartz-service
+    spec:
+      containers:
+        - name: quartz-service
+          image: masstransit/quartz:latest
+          imagePullPolicy: Always
+          env:
+            - name: ASPNETCORE_URLS
+              value: http://+:8880
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
+            - name: MessageBroker__Broker__RabbitMq__Host
+              value: rabbitmq
+            - name: MessageBroker__Broker__RabbitMq__VirtualHost
+              value: /
+            - name: MessageBroker__Broker__RabbitMq__Username
+              value: rabbitmq-user
+            - name: MessageBroker__Broker__RabbitMq__Password
+              value: rabbitmq-password
+            - name: MT_Scheduler
+              value: quartz
+            - name: MT_Quartz__DriverDelegateType
+              value: Quartz.Impl.AdoJobStore.MySQLDelegate, Quartz
+            - name: MT_Quartz__Provider
+              value: MySql
+            - name: MT_Quartz__ConnectionString
+              value: "Server=mysql-testdb;Database=quartz;Uid=root;Pwd=rootpass"
+            - name: MT_RMQ__USER
+              value: rabbitmq-user
+            - name: MT_RMQ__PASS
+              value: rabbitmq-password
+          ports:
+            # defines the port the container port of the pod
+            - containerPort: 8880
