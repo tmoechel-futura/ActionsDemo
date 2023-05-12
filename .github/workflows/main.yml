@@ -2,7 +2,8 @@ name: Test
 on:
   push:
 jobs:
-  build:
+  executebuild:
+    name: Exploring GitHub Actions
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
