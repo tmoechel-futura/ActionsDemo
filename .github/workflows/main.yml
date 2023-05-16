@@ -6,6 +6,14 @@ jobs:
     name: Exploring GitHub Actions
     runs-on: ubuntu-latest
     steps:
+      - name: setvariableold
+        id: setvariableold
+        run: echo ::set-output name=customerConfigKey::"f4h-dev";
+
+      - name: getvariableold
+        id: getvariableold
+        run: echo ${{ steps.setvariableold.outputs.customerConfigKey }}  
+        
       - name: setvariable
         id: setvariable
         run: echo "customerConfigKey=''f4h-staging''" >> $GITHUB_OUTPUT
