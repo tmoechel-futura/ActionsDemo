@@ -16,7 +16,7 @@ jobs:
         
       - name: setvariable
         id: setvariable
-        run: echo "customerConfigKey=''f4h-staging''" >> $GITHUB_OUTPUT
+        run: echo "customerConfigKey='f4h-staging'" >> $GITHUB_OUTPUT
 
       - name: getvariable
         id: getvariable
