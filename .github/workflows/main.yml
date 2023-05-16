@@ -21,7 +21,7 @@ jobs:
           customervalue="messe"
           setMaskedOutput customerKey, $customervalue, $GITHUB_OUTPUT;
           echo secretcustomerKey=$secretcustomervalue >> $GITHUB_OUTPUT
-          echo ::add-mask::$customervalue;
+          echo ::add-mask::$secretcustomervalue;
           echo customerKey=$customervalue >> $GITHUB_OUTPUT
           
           echo "key1=value1" >> $GITHUB_OUTPUT
