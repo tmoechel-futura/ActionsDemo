@@ -24,8 +24,6 @@ jobs:
           
           secretcustomervalue="Salzgitter"
           echo secretcustomerKey2=$secretcustomervalue >> $GITHUB_OUTPUT
-          
-          echo ::add-mask::$secretcustomervalue;
           echo customerKey=$customervalue >> $GITHUB_OUTPUT
           
           echo "key1=value1" >> $GITHUB_OUTPUT
