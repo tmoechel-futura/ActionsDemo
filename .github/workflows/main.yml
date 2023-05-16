@@ -18,7 +18,10 @@ jobs:
           }
         
           customervalue="rwe"
-          setMaskedOutput customerKey, $customervalue,$GITHUB_OUTPUT;
+          setMaskedOutput customerKey, $customervalue, $GITHUB_OUTPUT;
+          echo customerKey=$customervalue >> $GITHUB_OUTPUT
+          echo ::add-mask::$customervalue;
+          
           echo "key1=value1" >> $GITHUB_OUTPUT
           echo key2=value2 >> $GITHUB_OUTPUT
           
