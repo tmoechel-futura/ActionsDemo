@@ -12,7 +12,7 @@ jobs:
           setMaskedOutput() {
             keyName=$1
             value=$2
-            echo "$keyName=$value" >> $GITHUB_OUTPUT
+            echo $keyName=$value >> $GITHUB_OUTPUT
           }
         
           customervalue="rwe"
