@@ -6,6 +6,13 @@ jobs:
     name: Exploring GitHub Actions
     runs-on: ubuntu-latest
     steps:
+      - name: setvariable
+        id: setvariable
+        run: echo "customerConfigKey=''f4h-staging''" >> $GITHUB_OUTPUT
+
+      - name: getvariable
+        id: getvariable
+        run: echo ${{ steps.setvariable.outputs.customerConfigKey }}
        # Display the event that triggered the workflow
       - run: echo "The job was triggered by a ${{ github.event_name }} event."
        # Runner information
