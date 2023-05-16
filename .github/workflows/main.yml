@@ -12,11 +12,13 @@ jobs:
           setMaskedOutput() {
             keyName=$1
             value=$2
-            echo $keyName=$value >> $GITHUB_OUTPUT
+            githuboutput=$3
+            echo $keyName=$value >> githuboutput
+            echo ::add-mask::$value;
           }
         
           customervalue="rwe"
-          setMaskedOutput customerKey, $customervalue;
+          setMaskedOutput customerKey, $customervalue,$GITHUB_OUTPUT;
           echo "key1=value1" >> $GITHUB_OUTPUT
           echo key2=value2 >> $GITHUB_OUTPUT
           
