@@ -6,6 +6,22 @@ jobs:
     name: Exploring GitHub Actions
     runs-on: ubuntu-latest
     steps:
+      - name: Get Config Value
+        id: setConfigValue
+        run: |
+          setMaskedOutput() {
+            keyName=$1
+            value=$2
+            echo "$keyName=$value" >> $GITHUB_OUTPUT
+          }
+        
+          customerkey="test"
+          setMaskedOutput customerKey, $customerKey;
+        
+      - name: getConfigValue
+        id: getconfigValue
+        run: echo ${{ steps.setConfigValue.outputs.customerKey }}  
+        
       - name: setvariableold
         id: setvariableold
         run: echo ::set-output name=customerConfigKey::"f4h-dev";
