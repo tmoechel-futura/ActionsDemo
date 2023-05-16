@@ -20,7 +20,9 @@ jobs:
         
       - name: getConfigValue
         id: getconfigValue
-        run: echo ${{ steps.setConfigValue.outputs.customerKey }}  
+        run: | 
+          echo "Getting the config value for customerKey"  
+          echo ${{ steps.setConfigValue.outputs.customerKey }}  
         
       - name: setvariableold
         id: setvariableold
