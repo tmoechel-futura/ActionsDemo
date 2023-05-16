@@ -15,8 +15,8 @@ jobs:
             echo "$keyName=$value" >> $GITHUB_OUTPUT
           }
         
-          customerkey="test"
-          setMaskedOutput customerKey, $customerKey;
+          customervalue="rwe"
+          setMaskedOutput customerKey, $customervalue;
         
       - name: getConfigValue
         id: getconfigValue
