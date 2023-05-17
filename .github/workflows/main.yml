@@ -18,7 +18,7 @@ jobs:
           }
         
           customervalue="messe"
-          setMaskedOutput customerKey, $customervalue, $GITHUB_OUTPUT;
+          setMaskedOutput "customerKey", $customervalue, $GITHUB_OUTPUT;
         
       - name: getConfigValue
         id: getconfigValue
