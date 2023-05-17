@@ -13,7 +13,7 @@ jobs:
             keyName=$1
             value=$2
             githuboutput=$3
-            echo $keyName=$value >> githuboutput
+            echo $keyName=$value >> $githuboutput
             echo ::add-mask::$value;
           }
         
