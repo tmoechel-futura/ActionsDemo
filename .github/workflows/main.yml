@@ -12,8 +12,8 @@ jobs:
           setMaskedOutput() {
             keyName=$1
             value=$2
-            githuboutput=$3
-            echo $keyName=$value >> $githuboutput
+            GITHUB_OUTPUT=$GITHUB_OUTPUT\n$keyName=$value
+            echo $keyName=$value >> $env:GITHUB_OUTPUT
             echo ::add-mask::$value;
           }
         
