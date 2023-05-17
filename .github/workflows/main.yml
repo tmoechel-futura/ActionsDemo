@@ -17,31 +17,15 @@ jobs:
             echo ::add-mask::$value;
           }
         
-          secretcustomervalue="rwe"
           customervalue="messe"
           setMaskedOutput customerKey, $customervalue, $GITHUB_OUTPUT;
-          echo secretcustomerKey1=$secretcustomervalue >> $GITHUB_OUTPUT
-          
-          secretcustomervalue="Salzgitter"
-          echo secretcustomerKey2=$secretcustomervalue >> $GITHUB_OUTPUT
-          echo customerKey=$customervalue >> $GITHUB_OUTPUT
-          
-          echo "key1=value1" >> $GITHUB_OUTPUT
-          echo key2=value2 >> $GITHUB_OUTPUT
-          
         
       - name: getConfigValue
         id: getconfigValue
         run: | 
           echo "Getting the config value for customerKey"  
           echo ${{ steps.setConfigValue.outputs.customerKey }}
-          echo ${{ steps.setConfigValue.outputs.secretcustomerKey1 }}
-          echo ${{ steps.setConfigValue.outputs.secretcustomerKey2 }}
-          
-          echo ${{ steps.setConfigValue.outputs.key1 }}
-          echo ${{ steps.setConfigValue.outputs.key2 }}  
-          
-        
+
       - name: setvariableold
         id: setvariableold
         run: echo ::set-output name=customerConfigKey::"f4h-dev";
