@@ -13,7 +13,7 @@ jobs:
             keyName=$1
             value=$2
             GITHUB_OUTPUT=$GITHUB_OUTPUT\n$keyName=$value
-            echo $keyName=$value >> %GITHUB_OUTPUT%
+            echo $keyName=$value >> {{env.GITHUB_OUTPUT}}
             echo ::add-mask::$value;
           }
         
