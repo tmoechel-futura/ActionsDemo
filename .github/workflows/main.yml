@@ -20,7 +20,7 @@ jobs:
           customervalue="messe"
           setMaskedOutput customerkey1, $customervalue, $GITHUB_OUTPUT;
           customervalue="rwe"
-          echo customerkey2=$customervalue >> $githuboutput
+          echo customerkey2=$customervalue >> $GITHUB_OUTPUT
         
       - name: getConfigValue
         id: getconfigValue
