@@ -18,13 +18,17 @@ jobs:
           }
         
           customervalue="messe"
-          setMaskedOutput "customerKey", $customervalue, $GITHUB_OUTPUT;
+          setMaskedOutput customerkey1, $customervalue, $GITHUB_OUTPUT;
+          customervalue="rwe"
+          echo customerkey2=$customervalue >> $githuboutput
         
       - name: getConfigValue
         id: getconfigValue
         run: | 
           echo "Getting the config value for customerKey"  
-          echo ${{ steps.setConfigValue.outputs.customerKey }}
+          echo ${{ steps.setConfigValue.outputs.customerkey1 }}
+          echo ${{ steps.setConfigValue.outputs.customerkey2 }}
+          
 
       - name: setvariableold
         id: setvariableold
