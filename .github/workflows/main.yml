@@ -17,10 +17,11 @@ jobs:
             echo ::add-mask::$value;
           }
         
-          customervalue="messe"
-          setMaskedOutput customerkey1, $customervalue, $GITHUB_OUTPUT;
-          customervalue="rwe"
-          echo customerkey2=$customervalue >> $GITHUB_OUTPUT
+          customervalue1="messe"
+          setMaskedOutput "customerkey1", $customervalue1, $GITHUB_OUTPUT;
+          
+          customervalue2="rwe"
+          echo customerkey2=$customervalue2 >> $GITHUB_OUTPUT
         
       - name: getConfigValue
         id: getconfigValue
